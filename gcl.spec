@@ -10,7 +10,7 @@ Patch0:		%{name}-make.patch
 Patch1:		%{name}-OPT.patch
 Patch2:		%{name}-info.patch
 Patch3:		%{name}-libgmp.patch
-URL:		http://www.gnu.org/projects/gcl
+URL:		http://www.ma.utexas.edu/users/wfs/gcl.html
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gmp-devel
