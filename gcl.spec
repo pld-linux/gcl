@@ -95,8 +95,6 @@ exec %{_libdir}/gcl/unixport/saved_gcl \
 	"$@"
 EOF
 
-gzip -9nf readme faq ChangeLog
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -114,7 +112,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz
+%doc readme faq ChangeLog
 %attr(755,root,root) %{_bindir}/gcl
 %attr(755,root,root) %{_bindir}/gcl.exe
 %{_libdir}/gcl/cmpnew
