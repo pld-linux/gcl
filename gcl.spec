@@ -29,16 +29,16 @@ The GNU Common Lisp system, based on KCL.
 System GNU Common Lisp, bazuj±cy na KCL.
 
 %package tk
-Summary:	Tcl/tk bindings for GNU Common Lisp
-Summary(pl):	Interfejs Tcl/tk do GNU Common Lisp
+Summary:	Tcl/Tk bindings for GNU Common Lisp
+Summary(pl):	Interfejs Tcl/Tk do GNU Common Lisp
 Group:		Development/Languages
 Requires:	%{name} = %{version}
 
 %description tk
-Tcl/tk bindings for GNU Common Lisp.
+Tcl/Tk bindings for GNU Common Lisp.
 
 %description tk -l pl
-Intefejs Tcl/tk dla GNU Common Lisp.
+Intefejs Tcl/Tk dla GNU Common Lisp.
 
 %prep
 %setup  -q
