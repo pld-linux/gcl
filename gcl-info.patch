@@ -8,7 +8,7 @@
 +@format
 +@dircategory Programming Languages:
 +@direntry
-+* GCL: (gcl-si).			GNU Common Lisp
++* gcl: (gcl-si).			GNU Common Lisp
 +@end direntry
 +@end format
 +@end ifinfo
