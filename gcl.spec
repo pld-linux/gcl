@@ -1,9 +1,9 @@
 Summary:	GNU Common Lisp
 Summary(pl):	GNU Common Lisp
 Name:		gcl
-Version:	2.4.1
+Version:	2.4.3
 Release:	1
-License:	GPL
+License:	LGPL v2
 Group:		Development/Languages
 Source0:	ftp://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tgz
 Patch0:		%{name}-make.patch
@@ -49,7 +49,7 @@ aclocal
 %{__autoconf}
 cp -f /usr/share/automake/config.* .
 GCC="%{__cc}"; export GCC
-%configure2_13 \
+%configure \
 	--enable-notify=no
 
 %{__make} OPTFLAGS="%{rpmcflags}" \
