@@ -5,19 +5,32 @@ Version:	2.4.0
 Release:	4
 License:	GPL
 Group:		Development/Languages
+Group(cs):	Vıvojové prostøedky/Programovací jazyky
+Group(da):	Udvikling/Sprog
 Group(de):	Entwicklung/Sprachen
+Group(es):	Desarrollo/Lenguajes
+Group(fr):	Development/Langues
+Group(is):	Şróunartól/Forritunarmál
+Group(it):	Sviluppo/Linguaggi
+Group(ja):	³«È¯/¸À¸ì
+Group(no):	Utvikling/Programmeringsspråk
 Group(pl):	Programowanie/Jêzyki
+Group(pt):	Desenvolvimento/Linguagens
+Group(ru):	òÁÚÒÁÂÏÔËÁ/ñÚÙËÉ
+Group(sl):	Razvoj/Jeziki
+Group(sv):	Utveckling/Språk
+Group(uk):	òÏÚÒÏÂËÁ/íÏ×É
 Source0:	ftp://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tgz
 Patch0:		%{name}-make.patch
 Patch1:		%{name}-OPT.patch
 Patch2:		%{name}-info.patch
 Patch3:		%{name}-libgmp.patch
 URL:		http://www.gnu.org/projects/gcl
-BuildRequires:	tk-devel
-BuildRequires:	xemacs
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gmp-devel
+BuildRequires:	tk-devel
+BuildRequires:	xemacs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -30,8 +43,21 @@ System GNU Common Lisp, bazuj±cy na KCL.
 Summary:	Tcl/tk bindings for GNU Common Lisp
 Summary(pl):	Interfejs Tcl/tk do GNU Common Lisp
 Group:		Development/Languages
+Group(cs):	Vıvojové prostøedky/Programovací jazyky
+Group(da):	Udvikling/Sprog
 Group(de):	Entwicklung/Sprachen
+Group(es):	Desarrollo/Lenguajes
+Group(fr):	Development/Langues
+Group(is):	Şróunartól/Forritunarmál
+Group(it):	Sviluppo/Linguaggi
+Group(ja):	³«È¯/¸À¸ì
+Group(no):	Utvikling/Programmeringsspråk
 Group(pl):	Programowanie/Jêzyki
+Group(pt):	Desenvolvimento/Linguagens
+Group(ru):	òÁÚÒÁÂÏÔËÁ/ñÚÙËÉ
+Group(sl):	Razvoj/Jeziki
+Group(sv):	Utveckling/Språk
+Group(uk):	òÏÚÒÏÂËÁ/íÏ×É
 Requires:	%{name} = %{version}
 
 %description tk
@@ -48,10 +74,11 @@ Intefejs Tcl/tk dla GNU Common Lisp.
 %patch3 -p1
 
 %build
-GCC="%{__cc}"; export GCC
+rm -f missing
 aclocal
 autoconf
-cp -f %{_datadir}/automake/config.sub .
+automake -a -c || :
+GCC="%{__cc}"; export GCC
 %configure \
 	--enable-notify=no
 
@@ -134,4 +161,4 @@ rm -rf $RPM_BUILD_ROOT
 %attr (755,root,root) %{_libdir}/gcl/gcl-tk/gcltksrv
 %{_libdir}/gcl/gcl-tk/*.o
 %{_libdir}/gcl/gcl-tk/*.tcl
-%{_infodir}/gcl-tk.info*.gz
+%{_infodir}/gcl-tk.info*
