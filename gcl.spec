@@ -50,6 +50,8 @@ rm -f missing
 %{__autoconf}
 cp -f /usr/share/automake/config.* .
 GCC="%{__cc}"; export GCC
+# note: full path to xemacs must be passed
+EMACS=/usr/bin/xemacs; export EMACS
 %configure \
 	--enable-notify=no
 
