@@ -19,18 +19,18 @@
  AC_MSG_CHECKING([for gettimeofday declaration])
  AC_EGREP_HEADER(gettimeofday, sys/time.h, AC_MSG_RESULT(present), [
      AC_MSG_RESULT(missing)
-@@ -731,19 +731,16 @@
- 
+@@ -731,19 +731,13 @@
  rm -f makedefsafter
+ 
  if test $use_gmp = yes ; then
-- AC_MSG_CHECKING("use_gmp=yes, doing configure in gmp directory")
+- AC_MSG_CHECKING([use_gmp=yes, doing configure in gmp directory])
 - case "${canonical}" in
--   i[5-9]86* | pentium* | k6* | athlon*)
--      (cd gmp ; ./configure --target=pentium) ;;
+-   i[[5-9]]86* | pentium* | k6* | athlon*)
+-      (cd gmp ; ./configure --target=i486) ;;
 -   *)
 -      (cd gmp ; ./configure) ;;
 - esac
-+
+- test -f gmp/mpn/add_n.* || cp gmp/mpn/generic/*.c gmp/mpn/
 + AC_MSG_CHECKING("use_gmp=yes, checking for libgmp")
 + AC_CHECK_LIB(gmp,mpz_gcd,,true)
   GMP=1
@@ -40,7 +40,6 @@
 - echo 'MPFILES=${GMP_DIR}libgmp.a' >> makedefsafter
 + echo 'MPFILES=-lgmp' >> makedefsafter
   echo >> makedefsafter
-+
  fi
   
- 
+

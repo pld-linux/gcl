@@ -32,23 +32,3 @@
  
  @setchapternewpage odd
  @ifinfo
---- gcl-2.4.0/info/control.texi~.	Wed Dec  5 09:00:07 2001
-+++ gcl-2.4.0/info/control.texi	Wed Dec  5 09:00:26 2001
-@@ -82,7 +82,7 @@
- 
- The @b{after} command always returns an empty string.
- 
--@xref{tkerror}
-+@xref{tkerror}.
- 
- @unnumberedsubsec Keywords
- delay, sleep, time
-@@ -476,7 +476,7 @@
- The command will be executed at global level (outside the context
- of any Tcl procedure).
- 
--@xref{tkerror}
-+@xref{tkerror}.
- 
- @unnumberedsubsec Keywords
- form, manual
