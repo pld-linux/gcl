@@ -60,6 +60,9 @@ GCC="%{__cc}"; export GCC
 EMACS=/usr/bin/xemacs; export EMACS
 %configure \
 	--disable-statsysbfd \
+%ifarch alpha hppa ia64 mips
+	--disable-dlopen \
+%endif
 %if %{with builtin_bfd}
 	--enable-locbfd \
 %else
