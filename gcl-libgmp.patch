@@ -1,0 +1,46 @@
+--- gcl-2.4.0/makefile.old	Sun Dec 23 20:09:21 2001
++++ gcl-2.4.0/makefile	Sun Dec 23 20:22:45 2001
+@@ -131,7 +131,6 @@
+ 
+ all:   ${HDIR}cmpinclude.h
+ 	(cd $(BINDIR); make all)
+-	make mpfiles
+ 	rm -f o/cmpinclude.h ; ln h/cmpinclude.h o
+ 	make -C $(ODIR) all
+ 	make -C $(LSPDIR) all
+--- gcl-2.4.0/configure.in.old	Sun Dec 23 20:11:36 2001
++++ gcl-2.4.0/configure.in	Sun Dec 23 23:10:05 2001
+@@ -137,7 +137,7 @@
+ #--------------------------------------------------------------------
+ 
+ AC_CHECK_FUNC(BSDgettimeofday, AC_DEFINE(HAVE_BSDGETTIMEOFDAY),
+-	AC_CHECK_FUNC(gettimeofday, , AC_DEFINE(NO_GETTOD)))
++	[AC_CHECK_FUNC(gettimeofday, , AC_DEFINE(NO_GETTOD))])
+ AC_MSG_CHECKING([for gettimeofday declaration])
+ AC_EGREP_HEADER(gettimeofday, sys/time.h, AC_MSG_RESULT(present), [
+     AC_MSG_RESULT(missing)
+@@ -731,19 +731,16 @@
+ 
+ rm -f makedefsafter
+ if test $use_gmp = yes ; then
+- AC_MSG_CHECKING("use_gmp=yes, doing configure in gmp directory")
+- case "${canonical}" in
+-   i[5-9]86* | pentium* | k6* | athlon*)
+-      (cd gmp ; ./configure --target=pentium) ;;
+-   *)
+-      (cd gmp ; ./configure) ;;
+- esac
++
++ AC_MSG_CHECKING("use_gmp=yes, checking for libgmp")
++ AC_CHECK_LIB(gmp,mpz_gcd,,true)
+  GMP=1
+  AC_DEFINE(GMP)
+  AC_SUBST(GMP)
+  echo > makedefsafter
+- echo 'MPFILES=${GMP_DIR}libgmp.a' >> makedefsafter
++ echo 'MPFILES=-lgmp' >> makedefsafter
+  echo >> makedefsafter
++
+ fi
+  
+ 
