@@ -77,7 +77,7 @@ Intefejs Tcl/tk dla GNU Common Lisp.
 rm -f missing
 aclocal
 autoconf
-automake -a -c || :
+cp -f /usr/share/automake/config.* .
 GCC="%{__cc}"; export GCC
 %configure \
 	--enable-notify=no
