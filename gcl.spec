@@ -2,7 +2,7 @@ Summary:	GNU Common Lisp system
 Summary(pl):	System GNU Common Lisp
 Name:		gcl
 Version:	2.6.5
-Release:	2
+Release:	3
 License:	LGPL v2
 Group:		Development/Languages
 Source0:	ftp://ftp.gnu.org/gnu/gcl/%{name}-%{version}.tar.gz
