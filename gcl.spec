@@ -22,6 +22,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gmp-devel >= 4.0
 BuildRequires:	readline-devel
+BuildRequires:	texinfo
 %define	_tkline	8.4
 BuildRequires:	tk-devel >= %{_tkline}
 BuildRequires:	xemacs
