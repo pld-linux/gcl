@@ -1,8 +1,8 @@
 Summary:	GNU Common Lisp
 Summary(pl):	GNU Common Lisp
 Name:		gcl
-Version:	2.4.0
-Release:	4
+Version:	2.4.1
+Release:	1
 License:	GPL
 Group:		Development/Languages
 Group(cs):	Vývojové prostøedky/Programovací jazyky
@@ -79,7 +79,7 @@ aclocal
 autoconf
 cp -f /usr/share/automake/config.* .
 GCC="%{__cc}"; export GCC
-%configure \
+%configure2_13 \
 	--enable-notify=no
 
 %{__make} OPTFLAGS="%{rpmcflags}" \
