@@ -1,18 +1,70 @@
-diff -urN gcl-2.4.0/makefile gcl-2.4.0.new/makefile
---- gcl-2.4.0/makefile	Sun May  6 08:18:49 2001
-+++ gcl-2.4.0.new/makefile	Sat Nov 17 10:50:38 2001
-@@ -133,10 +133,10 @@
- 	(cd $(BINDIR); make all)
- 	make mpfiles
- 	rm -f o/cmpinclude.h ; ln h/cmpinclude.h o
--	(cd $(ODIR); make all)
--	(cd $(LSPDIR); make all)
--	(cd $(CMPDIR); make all)
--	(cd $(PORTDIR); make saved_gcl)
-+	make -C $(ODIR) all
-+	make -C $(LSPDIR) all
-+	make -C $(CMPDIR) all
-+	make -C $(PORTDIR) saved_gcl
- 	make command
+--- gcl-2.6.2/makefile.orig	2004-05-26 04:22:25.000000000 +0200
++++ gcl-2.6.2/makefile	2004-07-15 19:44:19.787820607 +0200
+@@ -51,26 +51,30 @@
+ 	cp $(<D)/../include/$(@F) $@
  
- # 	After making successfully send in a notification to
+ $(PORTDIR)/saved_pre_gcl: $(HDIR)cmpinclude.h
+-	(cd $(BINDIR); $(MAKE) all)
++	$(MAKE) -C $(BINDIR) all
+ 	$(MAKE) mpfiles
+ 	rm -f o/cmpinclude.h ; cp h/cmpinclude.h o
+-	(cd $(ODIR); $(MAKE) all)
++	$(MAKE) -C $(ODIR) all
+ 	$(MAKE) $<
+ 	rm -f o/cmpinclude.h ; cp h/cmpinclude.h o
+-	(cd $(ODIR); $(MAKE) all)
++	$(MAKE) -C $(ODIR) all
+ 	cd $(@D) && $(MAKE) $(@F)
+ 
+ $(PORTDIR)/saved_gcl: $(HDIR)cmpinclude.h $(PORTDIR)/saved_pre_gcl
+-	(cd $(LSPDIR); touch *.lsp ; $(MAKE) all)
+-	(cd $(CMPDIR); touch *.lsp ; $(MAKE) all)
++	(cd $(LSPDIR); touch *.lsp)
++	$(MAKE) -C $(LSPDIR) all
++	(cd $(CMPDIR); touch *.lsp)
++	$(MAKE) -C $(CMPDIR) all
+ 	cd $(@D) && $(MAKE) $(@F)
+ 
+ $(PORTDIR)/saved_pcl_gcl: $(PORTDIR)/saved_gcl
+-	(cd $(PCLDIR); rm -f *.c; $(MAKE) all)
++	(cd $(PCLDIR); rm -f *.c)
++	$(MAKE) -C $(PCLDIR) all
+ 	cd $(@D) && $(MAKE) $(@F)
+ 
+ $(PORTDIR)/saved_ansi_gcl: $(PORTDIR)/saved_pcl_gcl
+-	(cd $(CLCSDIR); rm -f *.c; $(MAKE) all)
++	(cd $(CLCSDIR); rm -f *.c)
++	$(MAKE) -C $(CLCSDIR) all
+ 	cd $(@D) && $(MAKE) $(@F)
+ 
+ ansi-tests/test_results: $(PORTDIR)/saved_ansi_gcl
+@@ -102,7 +106,7 @@
+ mpfiles: $(MPFILES)
+ 
+ $(MPDIR)/libmport.a:
+-	(cd mp ; $(MAKE) all)
++	$(MAKE) -C mp all
+ 
+ $(GMPDIR)/libgmp.a: $(GMPDIR)/Makefile
+ 	cd $(GMPDIR) && $(MAKE) && rm -f libgmp.a &&  ar qc libgmp.a *.o */*.o
+@@ -234,7 +238,7 @@
+ OTHERS=$(HDIR)notcomp.h $(HDIR)rgbc.h $(HDIR)stacks.h 
+ 
+ $(HDIR)new_decl.h:
+-	(cd o && $(MAKE) ../$@)
++	$(MAKE) -C o ../$@
+ 
+ $(HDIR)cmpinclude.h: $(CMPINCLUDE_FILES) $(HDIR)config.h
+ 	cat $(HDIR)config.h | sed -e "1,/Begin for cmpincl/d" \
+@@ -258,7 +262,7 @@
+ 	chmod a+rx configure
+ 
+ kcp:
+-	(cd go ; $(MAKE)  "CFLAGS = -I../h -pg  -c -g ")
+-	(cd unixport ; $(MAKE) gcp)
++	$(MAKE) -C go "CFLAGS = -I../h -pg  -c -g "
++	$(MAKE) -C unixport gcp
+ 
+-#.INTERMEDIATE: unixport/saved_pcl_gcl
+\ No newline at end of file
++#.INTERMEDIATE: unixport/saved_pcl_gcl
