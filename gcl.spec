@@ -46,7 +46,7 @@ Intefejs Tcl/tk dla GNU Common Lisp.
 
 %build
 rm -f missing
-aclocal
+%{__aclocal}
 %{__autoconf}
 cp -f /usr/share/automake/config.* .
 GCC="%{__cc}"; export GCC
