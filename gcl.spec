@@ -2,7 +2,7 @@ Summary:	GNU Common Lisp
 Summary(pl):	GNU Common Lisp
 Name:		gcl
 Version:	2.4.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		Development/Languages
 Group(de):	Entwicklung/Sprachen
@@ -120,7 +120,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files tk
 %defattr(644,root,root,755)
-%dir %{_infodir}
 %attr(755,root,root) %{_bindir}/gcl-tk
-%{_libdir}/gcl/gcl-tk
+%dir %{_libdir}/gcl/gcl-tk
+%attr (755,root,root) %{_libdir}/gcl/gcl-tk/{gcltkaux, gcltksrv}
+%{_libdir}/gcl/gcl-tk/{*.o, *.tcl}
 %{_infodir}/gcl-tk.info*.gz
