@@ -2,7 +2,7 @@ Summary:	GNU Common Lisp
 Summary(pl):	GNU Common Lisp
 Name:		gcl
 Version:	2.4.0
-Release:	3
+Release:	4
 License:	GPL
 Group:		Development/Languages
 Group(de):	Entwicklung/Sprachen
@@ -16,6 +16,7 @@ URL:		http://www.gnu.org/projects/gcl
 BuildRequires:	tk-devel
 BuildRequires:	xemacs
 BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	gmp-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -48,7 +49,9 @@ Intefejs Tcl/tk dla GNU Common Lisp.
 
 %build
 GCC="%{__cc}"; export GCC
+aclocal
 autoconf
+cp -f %{_datadir}/automake/config.sub .
 %configure \
 	--enable-notify=no
 
