@@ -122,6 +122,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/gcl-tk
 %dir %{_libdir}/gcl/gcl-tk
-%attr (755,root,root) %{_libdir}/gcl/gcl-tk/{gcltkaux, gcltksrv}
-%{_libdir}/gcl/gcl-tk/{*.o, *.tcl}
+%attr (755,root,root) %{_libdir}/gcl/gcl-tk/gcltkaux
+%attr (755,root,root) %{_libdir}/gcl/gcl-tk/gcltksrv
+%{_libdir}/gcl/gcl-tk/*.o
+%{_libdir}/gcl/gcl-tk/*.tcl
 %{_infodir}/gcl-tk.info*.gz
