@@ -1,0 +1,71 @@
+diff -urN gcl-2.4.0/makefile gcl-2.4.0.new/makefile
+--- gcl-2.4.0/makefile	Sun May  6 08:18:49 2001
++++ gcl-2.4.0.new/makefile	Sat Nov 17 10:50:38 2001
+@@ -25,10 +25,10 @@
+ # root for the installation, eg /usr/local
+ # This would cause make install to create /usr/local/bin/gcl and
+ # /usr/local/lib/gcl-2-??/* with some basic files.
+-prefix=/usr/local
++prefix=/usr
+ 
+ # where to place the info files
+-INFO_DIR=/usr/local/info/
++INFO_DIR=/usr/share/info/
+ 
+ # where to put emacs lisp files.
+ EMACS_SITE_LISP=/usr/share/emacs/20.7/site-lisp
+@@ -38,28 +38,28 @@
+ 
+ # numerous TCL/TK variables culled from the tkConfig.sh and tclConfig.sh
+ # if these are found.
+-TK_CONFIG_PREFIX=/usr/local/lib
+-TK_LIBRARY=/usr/local/lib/tk8.3
+-TCL_LIBRARY=/usr/local/lib/tcl8.3
++TK_CONFIG_PREFIX=/usr/lib
++TK_LIBRARY=/usr/lib/tk8.3
++TCL_LIBRARY=/usr/lib/tcl8.3
+ TK_XINCLUDES=-I/usr/X11R6/include
+-TK_INCLUDE=-I/usr/local/lib/../include
+-TCL_INCLUDE=-I/usr/local/lib/../include
+-TK_LIB_SPEC=-L/usr/local/lib -ltk8.3
+-TK_BUILD_LIB_SPEC=-L/home/wfs/src/tk8.3.2/unix -ltk8.3
++TK_INCLUDE=-I/usr/lib/../include
++TCL_INCLUDE=-I/usr/lib/../include
++TK_LIB_SPEC=-L/usr/lib -ltk8.3
++TK_BUILD_LIB_SPEC=-L/usr/lib -ltk8.3
+ TK_XLIBSW=-L/usr/X11R6/lib -lX11
+ TK_XINCLUDES=-I/usr/X11R6/include
+-TCL_LIB_SPEC=-L/usr/local/lib -ltcl8.3${TCL_DBGX}
++TCL_LIB_SPEC=-L/usr/lib -ltcl8.3${TCL_DBGX}
+ TCL_DL_LIBS=-ldl
+-TCL_LIBS=-ldl -lm
++TCL_LIBS=-ldl  -lm
+ 
+-NOTIFY=yes
++NOTIFY=no
+ GCC=gcc
+ 
+ 
+ 
+ 
+ 
+-GCLDIR=/home/wfs/cvs/gcl
++GCLDIR=/home/users/filip/rpm/BUILD/gcl-2.4.0
+ SHELL=/bin/sh
+ MACHINE=386-linux
+ 
+@@ -133,10 +133,10 @@
+ 	(cd $(BINDIR); make all)
+ 	make mpfiles
+ 	rm -f o/cmpinclude.h ; ln h/cmpinclude.h o
+-	(cd $(ODIR); make all)
+-	(cd $(LSPDIR); make all)
+-	(cd $(CMPDIR); make all)
+-	(cd $(PORTDIR); make saved_gcl)
++	make -C $(ODIR) all
++	make -C $(LSPDIR) all
++	make -C $(CMPDIR) all
++	make -C $(PORTDIR) saved_gcl
+ 	make command
+ 
+ # 	After making successfully send in a notification to
