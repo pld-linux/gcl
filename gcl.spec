@@ -9,7 +9,9 @@ Source0:	ftp://ftp.gnu.org/gnu/gcl/%{name}-%{version}.tar.gz
 # Source0-md5:	e0852318b81c93b76bc7e012f036ec6c
 Patch0:		%{name}-make.patch
 Patch1:		%{name}-info.patch
-Patch2:		%{name}-binutils.patch
+# It seems this patch doesn't fix what it should: still doesn't build with
+# newer binutils
+#Patch2:		%{name}-binutils.patch
 URL:		http://www.gnu.org/software/gcl/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -42,7 +44,7 @@ Interfejs Tcl/Tk dla GNU Common Lisp.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
+#%%patch2 -p1
 
 %build
 %{__aclocal}
