@@ -1,26 +1,23 @@
 Summary:	GNU Common Lisp system
 Summary(pl):	System GNU Common Lisp
 Name:		gcl
-Version:	2.4.4
-Release:	2
+Version:	2.6.2
+Release:	1
 License:	LGPL v2
 Group:		Development/Languages
-Source0:	ftp://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tgz
-# Source0-md5:	cd2326647d1cd18ccec088370ebdf58d
+Source0:	ftp://ftp.gnu.org/gnu/gcl/%{name}-%{version}.tar.gz
+# Source0-md5:	dfb205e96b5cfa1ab1795110cf38f209
 Patch0:		%{name}-make.patch
-Patch1:		%{name}-OPT.patch
-Patch2:		%{name}-info.patch
-Patch3:		%{name}-libgmp.patch
-Patch4:		%{name}-bfd.patch
+Patch1:		%{name}-info.patch
 URL:		http://www.gnu.org/software/gcl/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	gmp-devel
-%define	_tkline	8.3
-BuildRequires:	tk-devel >= %{_tkline}.4-5
+BuildRequires:	gmp-devel >= 4.0
+BuildRequires:	readline-devel
+%define	_tkline	8.4
+BuildRequires:	tk-devel >= %{_tkline}
 BuildRequires:	xemacs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-ExclusiveArch:	%{ix86} sparc
 
 %description
 The GNU Common Lisp system, based on KCL.
@@ -32,7 +29,7 @@ System GNU Common Lisp, bazuj±cy na KCL.
 Summary:	Tcl/Tk bindings for GNU Common Lisp
 Summary(pl):	Interfejs Tcl/Tk do GNU Common Lisp
 Group:		Development/Languages
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description tk
 Tcl/Tk bindings for GNU Common Lisp.
@@ -41,15 +38,11 @@ Tcl/Tk bindings for GNU Common Lisp.
 Intefejs Tcl/Tk dla GNU Common Lisp.
 
 %prep
-%setup  -q
+%setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
-#%patch4 -p1
 
 %build
-rm -f missing
 %{__aclocal}
 %{__autoconf}
 cp -f /usr/share/automake/config.* .
@@ -57,32 +50,26 @@ GCC="%{__cc}"; export GCC
 # note: full path to xemacs must be passed
 EMACS=/usr/bin/xemacs; export EMACS
 %configure \
+	--disable-statsysbfd \
+	--enable-dynsysbfd \
+	--enable-dynsysgmp \
 	--enable-notify=no
 
 %{__make} \
-	OPTFLAGS="%{rpmcflags}" \
 	EMACS_SITE_LISP=`xemacs -q -batch 2>&1 | sed -e /Loading/d `
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_libdir}/gcl/{cmpnew,unixport,lsp,gcl-tk} \
-	$RPM_BUILD_ROOT{%{_infodir},%{_mandir}/man1,%{_bindir}} \
-	$RPM_BUILD_ROOT%{_datadir}/emacs/site-lisp
+install -d $RPM_BUILD_ROOT{%{_infodir},%{_mandir}/man1}
 
-cd info
-rm -f *info*
-makeinfo gcl-si.texi gcl-tk.texi
-install gcl*info* $RPM_BUILD_ROOT%{_infodir}
-cd ..
+%{__make} install1 \
+	DESTDIR=$RPM_BUILD_ROOT \
+	INSTALL_LIB_DIR=%{_libdir}/gcl
+
+mv -f $RPM_BUILD_ROOT%{_libdir}/gcl/info/* $RPM_BUILD_ROOT%{_infodir}
+rmdir $RPM_BUILD_ROOT%{_libdir}/gcl/info
 
 install man/man1/gcl.1 $RPM_BUILD_ROOT%{_mandir}/man1
-
-install unixport/saved_gcl $RPM_BUILD_ROOT%{_libdir}/gcl/unixport
-install info/*info* $RPM_BUILD_ROOT%{_infodir}
-install cmpnew/collectfn.o $RPM_BUILD_ROOT%{_libdir}/gcl/cmpnew
-install lsp/{gprof.lsp,info.o,profile.lsp} $RPM_BUILD_ROOT%{_libdir}/gcl/lsp
-install gcl-tk/{decode.tcl,gcl.tcl,gcltkaux,gcltksrv,tinfo.o,tkl.o} \
-	$RPM_BUILD_ROOT%{_libdir}/gcl/gcl-tk
 
 ln -sf %{_libdir}/gcl/unixport/saved_gcl $RPM_BUILD_ROOT%{_bindir}/gcl.exe
 
@@ -101,7 +88,7 @@ exec %{_libdir}/gcl/unixport/saved_gcl \
 	-dir {_libdir}/gcl/unixport/ \
 	-libdir %{_libdir}/gcl/ \
 	-eval '(setq si::*allow-gzipped-file* t)' \
-	-eval '(setq si::*tk-library* "%{_libdir}/tk%{_tkline}")' \
+	-eval '(setq si::*tk-library* "/usr/lib/tk%{_tkline}")' \
 	"$@"
 EOF
 
@@ -126,10 +113,16 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/gcl
 %attr(755,root,root) %{_bindir}/gcl.exe
 %dir %{_libdir}/gcl
+%{_libdir}/gcl/clcs
 %{_libdir}/gcl/cmpnew
+%{_libdir}/gcl/h
 %{_libdir}/gcl/lsp
+%{_libdir}/gcl/pcl
 %dir %{_libdir}/gcl/unixport
 %attr(755,root,root) %{_libdir}/gcl/unixport/saved_gcl
+%{_libdir}/gcl/unixport/*.lsp
+# to -devel?
+#%{_libdir}/gcl/unixport/*.a
 %{_infodir}/gcl-si.info*
 %{_mandir}/man1/*
 
