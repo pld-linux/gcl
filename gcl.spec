@@ -1,5 +1,5 @@
-Summary:	GNU Common Lisp
-Summary(pl):	GNU Common Lisp
+Summary:	GNU Common Lisp system
+Summary(pl):	System GNU Common Lisp
 Name:		gcl
 Version:	2.4.4
 Release:	2
@@ -16,7 +16,6 @@ URL:		http://www.ma.utexas.edu/users/wfs/gcl.html
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gmp-devel
-BuildRequires:	sed
 %define	_tkline	8.3
 BuildRequires:	tk-devel >= %{_tkline}.4-5
 BuildRequires:	xemacs
@@ -60,7 +59,8 @@ EMACS=/usr/bin/xemacs; export EMACS
 %configure \
 	--enable-notify=no
 
-%{__make} OPTFLAGS="%{rpmcflags}" \
+%{__make} \
+	OPTFLAGS="%{rpmcflags}" \
 	EMACS_SITE_LISP=`xemacs -q -batch 2>&1 | sed -e /Loading/d `
 
 %install
@@ -125,8 +125,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc readme faq ChangeLog
 %attr(755,root,root) %{_bindir}/gcl
 %attr(755,root,root) %{_bindir}/gcl.exe
+%dir %{_libdir}/gcl
 %{_libdir}/gcl/cmpnew
 %{_libdir}/gcl/lsp
+%dir %{_libdir}/gcl/unixport
 %attr(755,root,root) %{_libdir}/gcl/unixport/saved_gcl
 %{_infodir}/gcl-si.info*
 %{_mandir}/man1/*
