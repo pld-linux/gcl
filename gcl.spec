@@ -35,7 +35,7 @@ Requires:	%{name} = %{version}-%{release}
 Tcl/Tk bindings for GNU Common Lisp.
 
 %description tk -l pl
-Intefejs Tcl/Tk dla GNU Common Lisp.
+Interfejs Tcl/Tk dla GNU Common Lisp.
 
 %prep
 %setup -q
