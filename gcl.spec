@@ -17,6 +17,7 @@ BuildRequires:	gmp-devel
 BuildRequires:	tk-devel
 BuildRequires:	xemacs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+ExclusiveArch:	%{ix86} sparc
 
 %description
 The GNU Common Lisp system, based on KCL.
