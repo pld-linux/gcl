@@ -1,9 +1,8 @@
-
 Summary:	GNU Common Lisp
 Summary(pl):	GNU Common Lisp
 Name:		gcl
 Version:	2.4.4
-Release:	1
+Release:	2
 License:	LGPL v2
 Group:		Development/Languages
 Source0:	ftp://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tgz
@@ -17,7 +16,8 @@ URL:		http://www.ma.utexas.edu/users/wfs/gcl.html
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gmp-devel
-BuildRequires:	tk-devel
+BuildRequires:	sed
+BuildRequires:	tk-devel >= 8.3.4-5
 BuildRequires:	xemacs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 ExclusiveArch:	%{ix86} sparc
@@ -68,10 +68,12 @@ install -d $RPM_BUILD_ROOT%{_libdir}/gcl/{cmpnew,unixport,lsp,gcl-tk} \
 	$RPM_BUILD_ROOT{%{_infodir},%{_mandir}/man1,%{_bindir}} \
 	$RPM_BUILD_ROOT%{_datadir}/emacs/site-lisp
 
-(cd info
+cd info
 rm -f *info*
 makeinfo gcl-si.texi gcl-tk.texi
-install gcl*info* $RPM_BUILD_ROOT%{_infodir})
+install gcl*info* $RPM_BUILD_ROOT%{_infodir}
+cd ..
+
 install man/man1/gcl.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
 install unixport/saved_gcl $RPM_BUILD_ROOT%{_libdir}/gcl/unixport
