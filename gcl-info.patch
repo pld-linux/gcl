@@ -1,34 +1,34 @@
---- gcl-2.4.0/info/gcl-si.texi~	Wed Dec  5 08:41:50 2001
-+++ gcl-2.4.0/info/gcl-si.texi	Wed Dec  5 08:41:50 2001
-@@ -18,6 +18,14 @@
- @c (texinfo-multiple-files-update "gcl-si.texi" t t)
+--- gcl-2.6.2/info/gcl-si.texi.orig	2002-02-19 20:21:19.000000000 +0100
++++ gcl-2.6.2/info/gcl-si.texi	2004-07-15 21:12:02.600648356 +0200
+@@ -24,10 +24,10 @@
+ Copyright 1994 William F. Schelter
  
- 
-+@ifinfo
-+@format
+ @format
+-INFO-DIR-SECTION GNU Common Lisp
+-START-INFO-DIR-ENTRY
+-* gcl-si: (gcl-si.info). GNU Common Lisp System Internals
+-END-INFO-DIR-ENTRY
 +@dircategory Programming Languages:
 +@direntry
-+* gcl: (gcl-si).			GNU Common Lisp
++* gcl-si: (gcl-si).			GNU Common Lisp System Internals
 +@end direntry
-+@end format
-+@end ifinfo
+ @end format
+ @end ifinfo
  
- @setchapternewpage odd
- @ifinfo
---- gcl-2.4.0/info/gcl-tk.texi~	Wed Dec  5 08:44:15 2001
-+++ gcl-2.4.0/info/gcl-tk.texi	Wed Dec  5 08:44:15 2001
-@@ -6,6 +6,14 @@
- @c to update the menus do: 
- @c (texinfo-multiple-files-update "gcl-tk.texi" t t)
+--- gcl-2.6.2/info/gcl-tk.texi.orig	2004-07-15 21:12:39.619802947 +0200
++++ gcl-2.6.2/info/gcl-tk.texi	2004-07-15 21:13:16.702941603 +0200
+@@ -14,10 +14,10 @@
+ Copyright 1994 William F. Schelter
  
-+@ifinfo
-+@format
+ @format
+-INFO-DIR-SECTION GNU Common Lisp
+-START-INFO-DIR-ENTRY
+-* gcl-tk: (gcl-tk.info). GNU Common Lisp Tk Manual
+-END-INFO-DIR-ENTRY
 +@dircategory Programming Languages:
 +@direntry
-+* gcl-tk: (gcl-tk).			The GNU Line Editor - TK Manual
++* gcl-tk: (gcl-tk).			GNU Common Lisp Tk Manual
 +@end direntry
-+@end format
-+@end ifinfo
+ @end format
+ @end ifinfo
  
- @setchapternewpage odd
- @ifinfo
