@@ -2,7 +2,7 @@ Summary:	GNU Common Lisp system
 Summary(pl):	System GNU Common Lisp
 Name:		gcl
 Version:	2.6.2
-Release:	1
+Release:	2
 License:	LGPL v2
 Group:		Development/Languages
 Source0:	ftp://ftp.gnu.org/gnu/gcl/%{name}-%{version}.tar.gz
@@ -51,7 +51,9 @@ GCC="%{__cc}"; export GCC
 EMACS=/usr/bin/xemacs; export EMACS
 %configure \
 	--disable-statsysbfd \
+%ifnarch alpha hppa ia64 mips
 	--enable-dynsysbfd \
+%endif
 	--enable-dynsysgmp \
 	--enable-notify=no
 
