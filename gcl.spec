@@ -5,6 +5,8 @@ Version:	2.4.0
 Release:	1
 License:	GPL
 Group:		Development/Languages
+Group(de):	Entwicklung/Sprachen
+Group(pl):	Programowanie/Jêzyki
 Source0:	ftp://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tgz
 Patch0:		%{name}-make.patch
 Patch1:		%{name}-OPT.patch
@@ -17,12 +19,14 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 The GNU Common Lisp system, based on KCL.
 
 %description -l pl
-System GNU Common Lis[, bazuj±cy na KCL.
+System GNU Common Lisp, bazuj±cy na KCL.
 
 %package tk
 Summary:	Tcl/tk bindings for GNU Common Lisp
-Summary(pl):	Documntation dla GNU Common Lisp w formacie HTML
+Summary(pl):	Interfejs Tcl/tk do GNU Common Lisp
 Group:		Development/Languages
+Group(de):	Entwicklung/Sprachen
+Group(pl):	Programowanie/Jêzyki
 Requires:	%{name} = %{version}
 
 %description tk
@@ -35,13 +39,15 @@ Intefejs Tcl/tk dla GNU Common Lisp
 Summary:	HTML documntation for GNU Common Lisp
 Summary(pl):	Dokumentacja dla GNU Common Lisp w formacie HTML
 Group:		Development/Languages
+Group(de):	Entwicklung/Sprachen
+Group(pl):	Programowanie/Jêzyki
 Requires:	%{name} = %{version}
 
 %description doc-html
-HTML documntation for GNU Common Lisp
+HTML documntation for GNU Common Lisp.
 
 %description doc-html -l pl
-Dokumentacja dla GNU Common Lisp w formacie HTML
+Dokumentacja dla GNU Common Lisp w formacie HTML.
 
 %prep
 %setup  -q
@@ -49,7 +55,7 @@ Dokumentacja dla GNU Common Lisp w formacie HTML
 %patch1 -p1
 
 %build
-export GCC=%{_cc}
+GCC="%{__cc}"; export GCC
 %configure2_13 \
 	--enable-notify=no
 %{__make} OPTFLAGS="%{rpmcflags}"
@@ -84,11 +90,14 @@ exec %{_libdir}/gcl/unixport/saved_gcl \
    -dir {_libdir}/gcl/unixport/ \
    -libdir %{_libdir}/gcl/ \
    -eval '(setq si::*allow-gzipped-file* t)' \
-   -eval '(setq si::*tk-library* "/usr/lib/tk8.3")' \
+   -eval '(setq si::*tk-library* "%{_libdir}/tk8.3")' \
      "$@"
 EOF
 
 gzip -9nf readme faq ChangeLog
+
+%clean
+rm -rf $RPM_BUILD_ROOT
 
 %post
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
@@ -102,9 +111,6 @@ gzip -9nf readme faq ChangeLog
 %postun tk
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %files
 %defattr(644,root,root,755)
 %doc *.gz
@@ -116,9 +122,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_infodir}/gcl-si.info*.gz
 
 %files doc-html
+%defattr(644,root,root,755)
 %doc info/*.html
 
 %files tk
+%defattr(644,root,root,755)
 %dir %{_infodir}
 %attr(755,root,root) %{_bindir}/gcl-tk
 %{_libdir}/gcl/gcl-tk
