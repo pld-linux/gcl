@@ -1,7 +1,5 @@
 Summary:	GNU Common Lisp
 Summary(pl):	GNU Common Lisp
-Summary(zh_CN):	[开发]C和其他语言的调试器
-Summary(zh_TW):	[秨祇]C㎝ㄤ粂ē秸刚竟
 Name:		gcl
 Version:	2.4.3
 Release:	1
