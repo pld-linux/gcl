@@ -1,12 +1,12 @@
 Summary:	GNU Common Lisp system
 Summary(pl):	System GNU Common Lisp
 Name:		gcl
-Version:	2.6.2
+Version:	2.6.5
 Release:	2
 License:	LGPL v2
 Group:		Development/Languages
 Source0:	ftp://ftp.gnu.org/gnu/gcl/%{name}-%{version}.tar.gz
-# Source0-md5:	dfb205e96b5cfa1ab1795110cf38f209
+# Source0-md5:	e0852318b81c93b76bc7e012f036ec6c
 Patch0:		%{name}-make.patch
 Patch1:		%{name}-info.patch
 URL:		http://www.gnu.org/software/gcl/
