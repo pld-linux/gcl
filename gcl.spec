@@ -7,6 +7,7 @@ Release:	2
 License:	LGPL v2
 Group:		Development/Languages
 Source0:	ftp://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tgz
+# Source0-md5:	5ad1a3e004b84363496f3f1e7eb81012
 Patch0:		%{name}-make.patch
 Patch1:		%{name}-OPT.patch
 Patch2:		%{name}-info.patch
