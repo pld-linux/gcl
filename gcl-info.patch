@@ -1,0 +1,54 @@
+--- gcl-2.4.0/info/gcl-si.texi~	Wed Dec  5 08:41:50 2001
++++ gcl-2.4.0/info/gcl-si.texi	Wed Dec  5 08:41:50 2001
+@@ -18,6 +18,14 @@
+ @c (texinfo-multiple-files-update "gcl-si.texi" t t)
+ 
+ 
++@ifinfo
++@format
++@dircategory Programming Languages:
++@direntry
++* GCL: (gcl-si).			GNU Common Lisp
++@end direntry
++@end format
++@end ifinfo
+ 
+ @setchapternewpage odd
+ @ifinfo
+--- gcl-2.4.0/info/gcl-tk.texi~	Wed Dec  5 08:44:15 2001
++++ gcl-2.4.0/info/gcl-tk.texi	Wed Dec  5 08:44:15 2001
+@@ -6,6 +6,14 @@
+ @c to update the menus do: 
+ @c (texinfo-multiple-files-update "gcl-tk.texi" t t)
+ 
++@ifinfo
++@format
++@dircategory Programming Languages:
++@direntry
++* gcl-tk: (gcl-tk).			The GNU Line Editor - TK Manual
++@end direntry
++@end format
++@end ifinfo
+ 
+ @setchapternewpage odd
+ @ifinfo
+--- gcl-2.4.0/info/control.texi~.	Wed Dec  5 09:00:07 2001
++++ gcl-2.4.0/info/control.texi	Wed Dec  5 09:00:26 2001
+@@ -82,7 +82,7 @@
+ 
+ The @b{after} command always returns an empty string.
+ 
+-@xref{tkerror}
++@xref{tkerror}.
+ 
+ @unnumberedsubsec Keywords
+ delay, sleep, time
+@@ -476,7 +476,7 @@
+ The command will be executed at global level (outside the context
+ of any Tcl procedure).
+ 
+-@xref{tkerror}
++@xref{tkerror}.
+ 
+ @unnumberedsubsec Keywords
+ form, manual
