@@ -1,8 +1,13 @@
+#
+# Conditional build:
+%bcond_without	builtin_bfd	# use built in bfd instead of system one
+#		(currently does not build with system one from new binutils)
+#
 Summary:	GNU Common Lisp system
 Summary(pl):	System GNU Common Lisp
 Name:		gcl
 Version:	2.6.5
-Release:	4
+Release:	5
 License:	LGPL v2
 Group:		Development/Languages
 Source0:	ftp://ftp.gnu.org/gnu/gcl/%{name}-%{version}.tar.gz
@@ -55,8 +60,12 @@ GCC="%{__cc}"; export GCC
 EMACS=/usr/bin/xemacs; export EMACS
 %configure \
 	--disable-statsysbfd \
+%if %{with builtin_bfd}
+	--enable-locbfd \
+%else
 %ifnarch alpha hppa ia64 mips
 	--enable-dynsysbfd \
+%endif
 %endif
 	--enable-dynsysgmp \
 	--enable-notify=no
