@@ -2,17 +2,17 @@
 Summary:	GNU Common Lisp
 Summary(pl):	GNU Common Lisp
 Name:		gcl
-Version:	2.4.3
-Release:	2
+Version:	2.4.4
+Release:	1
 License:	LGPL v2
 Group:		Development/Languages
 Source0:	ftp://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tgz
-# Source0-md5:	5ad1a3e004b84363496f3f1e7eb81012
+# Source0-md5:	cd2326647d1cd18ccec088370ebdf58d
 Patch0:		%{name}-make.patch
 Patch1:		%{name}-OPT.patch
 Patch2:		%{name}-info.patch
 Patch3:		%{name}-libgmp.patch
-Patch4:		%{name}-bdf.patch
+Patch4:		%{name}-bfd.patch
 URL:		http://www.ma.utexas.edu/users/wfs/gcl.html
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -46,7 +46,7 @@ Intefejs Tcl/tk dla GNU Common Lisp.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
+#%patch4 -p1
 
 %build
 rm -f missing
