@@ -17,8 +17,8 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gmp-devel
 BuildRequires:	sed
-%define		_tk-line	8.3
-BuildRequires:	tk-devel >= %{_tk-line}.4-5
+%define	_tkline	8.3
+BuildRequires:	tk-devel >= %{_tkline}.4-5
 BuildRequires:	xemacs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 ExclusiveArch:	%{ix86} sparc
@@ -101,7 +101,7 @@ exec %{_libdir}/gcl/unixport/saved_gcl \
 	-dir {_libdir}/gcl/unixport/ \
 	-libdir %{_libdir}/gcl/ \
 	-eval '(setq si::*allow-gzipped-file* t)' \
-	-eval '(setq si::*tk-library* "%{_libdir}/tk%{_tk-line}")' \
+	-eval '(setq si::*tk-library* "%{_libdir}/tk%{_tkline}")' \
 	"$@"
 EOF
 
