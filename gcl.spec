@@ -1,13 +1,13 @@
 #
 # Conditional build:
-%bcond_with	builtin_bfd	# use built in bfd instead of system one
+%bcond_without	builtin_bfd	# use built in bfd instead of system one
 #		(currently does not build with system one from new binutils)
 #
 Summary:	GNU Common Lisp system
 Summary(pl):	System GNU Common Lisp
 Name:		gcl
 Version:	2.6.6
-Release:	1
+Release:	2
 License:	LGPL v2
 Group:		Development/Languages
 Source0:	ftp://ftp.gnu.org/gnu/gcl/%{name}-%{version}.tar.gz
