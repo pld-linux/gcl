@@ -1,17 +1,17 @@
 #
 # Conditional build:
-%bcond_without	builtin_bfd	# use built in bfd instead of system one
+%bcond_with	builtin_bfd	# use built in bfd instead of system one
 #		(currently does not build with system one from new binutils)
 #
 Summary:	GNU Common Lisp system
 Summary(pl):	System GNU Common Lisp
 Name:		gcl
-Version:	2.6.5
-Release:	6
+Version:	2.6.6
+Release:	1
 License:	LGPL v2
 Group:		Development/Languages
 Source0:	ftp://ftp.gnu.org/gnu/gcl/%{name}-%{version}.tar.gz
-# Source0-md5:	e0852318b81c93b76bc7e012f036ec6c
+# Source0-md5:	45d67331b29cafc3e9b1eacb488044ec
 Patch0:		%{name}-make.patch
 Patch1:		%{name}-info.patch
 # It seems this patch doesn't fix what it should: still doesn't build with
