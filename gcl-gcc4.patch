@@ -1,0 +1,99 @@
+--- gcl-2.6.6/o/num_sfun.c.orig	2003-11-06 17:16:52.000000000 +0100
++++ gcl-2.6.6/o/num_sfun.c	2005-09-30 12:31:51.000000000 +0200
+@@ -43,6 +43,8 @@
+ 	return(z);
+ }
+ 
++static object number_sin(object x), number_cos(object x);
++
+ static object
+ number_exp(object x)
+ {
+@@ -64,7 +66,6 @@
+ 	case t_complex:
+ 	{
+ 		object y, y1;
+-		static object number_sin(object x), number_cos(object x);
+ 	        vs_mark;
+ 	
+ 		y = x->cmp.cmp_imag;
+@@ -88,12 +89,13 @@
+ 	}
+ }
+ 
++static object number_nlog(object x);
++
+ object
+ number_expt(object x, object y)
+ {
+ 	enum type tx, ty;
+ 	object z;
+-	static object number_nlog(object x);
+ 	vs_mark;
+ 
+ 	tx = type_of(x);
+@@ -172,12 +174,13 @@
+ 	return(z);
+ }
+ 
++static object number_sqrt(object x), number_atan2(object y, object x);
++
+ static object
+ number_nlog(object x)
+ {
+ 	double log(double);
+ 	object r=Cnil, i=Cnil, a, p;
+-	static object number_sqrt(object x), number_atan2(object y, object x);
+ 	vs_mark;
+ 
+ 	if (type_of(x) == t_complex) {
+--- gcl-2.6.6/o/format.c.orig	2003-11-06 17:16:50.000000000 +0100
++++ gcl-2.6.6/o/format.c	2005-09-30 12:38:58.000000000 +0200
+@@ -1794,13 +1794,15 @@
+ 	x = x->sm.sm_object0;
+ 	if (!colon && !atsign)
+ 		for (i = 0;  i < x->st.st_fillp;  i++) {
+-			if (isUpper(j = x->st.st_self[i]))
++			j = x->st.st_self[i];
++			if (isUpper(j))
+ 				j += 'a' - 'A';
+ 			writec_stream(j, fmt_stream);
+ 		}
+ 	else if (colon && !atsign)
+ 		for (b = TRUE, i = 0;  i < x->st.st_fillp;  i++) {
+-			if (isLower(j = x->st.st_self[i])) {
++			j = x->st.st_self[i];
++			if (isLower(j)) {
+ 				if (b)
+ 					j -= 'a' - 'A';
+ 				b = FALSE;
+@@ -1814,7 +1816,8 @@
+ 		}
+ 	else if (!colon && atsign)
+ 		for (b = TRUE, i = 0;  i < x->st.st_fillp;  i++) {
+-			if (isLower(j = x->st.st_self[i])) {
++			j = x->st.st_self[i];
++			if (isLower(j)) {
+ 				if (b)
+ 					j -= 'a' - 'A';
+ 				b = FALSE;
+@@ -1827,7 +1830,8 @@
+ 		}
+ 	else
+ 		for (i = 0;  i < x->st.st_fillp;  i++) {
+-			if (isLower(j = x->st.st_self[i]))
++			j = x->st.st_self[i];
++			if (isLower(j))
+ 				j -= 'a' - 'A';
+ 			writec_stream(j, fmt_stream);
+ 		}
+--- gcl-2.6.6/o/unixfsys.c.orig	2005-01-15 17:44:37.000000000 +0100
++++ gcl-2.6.6/o/unixfsys.c	2005-09-30 12:42:39.000000000 +0200
+@@ -266,7 +266,6 @@
+ 	char truefilename[MAXPATHLEN];
+ 	char current_directory[MAXPATHLEN];
+ 	char directory[MAXPATHLEN];
+-	static char *getwd(char *buffer);
+ #ifdef __MINGW32__ 
+         DWORD current_directory_length =
+             GetCurrentDirectory ( MAXPATHLEN, current_directory ); 

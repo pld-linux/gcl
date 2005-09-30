@@ -17,6 +17,7 @@ Patch1:		%{name}-info.patch
 # It seems this patch doesn't fix what it should: still doesn't build with
 # newer binutils
 #Patch2:		%{name}-binutils.patch
+Patch3:		%{name}-gcc4.patch
 URL:		http://www.gnu.org/software/gcl/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -51,6 +52,7 @@ Interfejs Tcl/Tk dla GNU Common Lisp.
 %patch0 -p1
 %patch1 -p1
 #%%patch2 -p1
+%patch3 -p1
 
 %build
 %{__aclocal}
