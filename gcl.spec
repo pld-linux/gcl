@@ -6,18 +6,17 @@
 Summary:	GNU Common Lisp system
 Summary(pl):	System GNU Common Lisp
 Name:		gcl
-Version:	2.6.6
-Release:	3
+Version:	2.6.7
+Release:	1
 License:	LGPL v2
 Group:		Development/Languages
 Source0:	ftp://ftp.gnu.org/gnu/gcl/%{name}-%{version}.tar.gz
-# Source0-md5:	45d67331b29cafc3e9b1eacb488044ec
+# Source0-md5:	c0f42e1f391162e5ac90912a70e8ecc3
 Patch0:		%{name}-make.patch
 Patch1:		%{name}-info.patch
 # It seems this patch doesn't fix what it should: still doesn't build with
 # newer binutils
 #Patch2:		%{name}-binutils.patch
-Patch3:		%{name}-gcc4.patch
 URL:		http://www.gnu.org/software/gcl/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -52,7 +51,6 @@ Interfejs Tcl/Tk dla GNU Common Lisp.
 %patch0 -p1
 %patch1 -p1
 #%%patch2 -p1
-%patch3 -p1
 
 %build
 %{__aclocal}
