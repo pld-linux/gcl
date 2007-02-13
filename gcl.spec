@@ -4,7 +4,7 @@
 #		(currently does not build with system one from new binutils)
 #
 Summary:	GNU Common Lisp system
-Summary(pl.UTF-8):   System GNU Common Lisp
+Summary(pl.UTF-8):	System GNU Common Lisp
 Name:		gcl
 Version:	2.6.7
 Release:	1
@@ -36,7 +36,7 @@ System GNU Common Lisp, bazujący na KCL.
 
 %package tk
 Summary:	Tcl/Tk bindings for GNU Common Lisp
-Summary(pl.UTF-8):   Interfejs Tcl/Tk do GNU Common Lisp
+Summary(pl.UTF-8):	Interfejs Tcl/Tk do GNU Common Lisp
 Group:		Development/Languages
 Requires:	%{name} = %{version}-%{release}
 
