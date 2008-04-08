@@ -10,7 +10,7 @@ Version:	2.6.7
 Release:	1
 License:	LGPL v2
 Group:		Development/Languages
-Source0:	ftp://ftp.gnu.org/gnu/gcl/%{name}-%{version}.tar.gz
+Source0:	http://ftp.gnu.org/gnu/gcl/%{name}-%{version}.tar.gz
 # Source0-md5:	c0f42e1f391162e5ac90912a70e8ecc3
 Patch0:		%{name}-make.patch
 Patch1:		%{name}-info.patch
