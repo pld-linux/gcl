@@ -1,34 +1,28 @@
---- gcl-2.6.2/info/gcl-si.texi.orig	2002-02-19 20:21:19.000000000 +0100
-+++ gcl-2.6.2/info/gcl-si.texi	2004-07-15 21:12:02.600648356 +0200
-@@ -24,10 +24,10 @@
- Copyright 1994 William F. Schelter
+--- gcl/info/gcl-si.texi.orig	2013-11-17 16:07:03.788056245 +0100
++++ gcl/info/gcl-si.texi	2013-11-17 16:08:48.101385200 +0100
+@@ -18,9 +18,9 @@
  
- @format
--INFO-DIR-SECTION GNU Common Lisp
--START-INFO-DIR-ENTRY
+ 
+ @setchapternewpage odd
+-@dircategory GNU Common Lisp
++@dircategory Programming Languages:
+ @direntry 
 -* gcl-si: (gcl-si.info). GNU Common Lisp System Internals
--END-INFO-DIR-ENTRY
-+@dircategory Programming Languages:
-+@direntry
 +* gcl-si: (gcl-si).			GNU Common Lisp System Internals
-+@end direntry
- @end format
- @end ifinfo
+ @end direntry
  
---- gcl-2.6.2/info/gcl-tk.texi.orig	2004-07-15 21:12:39.619802947 +0200
-+++ gcl-2.6.2/info/gcl-tk.texi	2004-07-15 21:13:16.702941603 +0200
-@@ -14,10 +14,10 @@
- Copyright 1994 William F. Schelter
+ @ifinfo
+--- gcl/info/gcl-tk.texi.orig	2013-11-17 16:07:03.988056236 +0100
++++ gcl/info/gcl-tk.texi	2013-11-17 16:09:21.064717150 +0100
+@@ -18,9 +18,9 @@
  
- @format
--INFO-DIR-SECTION GNU Common Lisp
--START-INFO-DIR-ENTRY
--* gcl-tk: (gcl-tk.info). GNU Common Lisp Tk Manual
--END-INFO-DIR-ENTRY
+ 
+ @setchapternewpage odd
+-@dircategory GNU Common Lisp
 +@dircategory Programming Languages:
-+@direntry
-+* gcl-tk: (gcl-tk).			GNU Common Lisp Tk Manual
-+@end direntry
- @end format
- @end ifinfo
+ @direntry 
+-* gcl-tk: (gcl-tk.info). GNU TK Manual
++* gcl-tk: (gcl-tk).			GNU TK Manual
+ @end direntry
  
+ @ifinfo

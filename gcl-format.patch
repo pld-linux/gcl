@@ -1,0 +1,11 @@
+--- gcl/gcl-tk/tkMain.c.orig	2013-11-11 15:55:48.000000000 +0100
++++ gcl/gcl-tk/tkMain.c	2013-11-17 17:37:21.967828865 +0100
+@@ -121,7 +121,7 @@
+ TCL_signal_error(x)
+      char *x;
+ {char buf[300] ;
+- sprintf("error %s",x);
++ sprintf(buf, "error %s",x);
+  Tcl_Eval(interp,buf);
+  dfprintf(stderr,x);
+ }
